@@ -41,4 +41,4 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 ## <a name="license">License :</a>
 This project is MIT licensed.
 
-Copyright 2015 Lcf.vs
+Copyright © 2015 - 2016 Lcf.vs
