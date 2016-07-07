@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.0.1",
-        "dom-arch/php-dom": "dev-master#v0.9.1"
+        "dom-arch/php-dom": "php-dom-0.9.1"
     },
     "autoload": {
         "files": ["lib/dump.php"],
