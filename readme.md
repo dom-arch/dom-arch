@@ -1,4 +1,4 @@
-# <a name="title">DOMArch</a>
+# <a name="title">DOMArch [BETA]</a>
 
 <i>When a tiny [PHPDOM](https://github.com/Lcfvs/PHPDOM) demo becomes a true opensource framework</i>
 
@@ -20,8 +20,8 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 
 * Enable the Apache Rewrite module
 * Copy the [document-root-files](./document-root-files) contents, directly on your document root
-* Rename the `domain.tld`, if needed
-* Create or clone a context into the `entrypoints` directory, chosse the subdomain name as dirname
+* Rename the `domain.tld` directory, if needed
+* Create or clone a context into the `entrypoints` directory, chosse the subdomain name as directory name
 
 No virtualhosts needed, the generic .htaccess files detects the host and redirects the requests to the directory with the same name
 
