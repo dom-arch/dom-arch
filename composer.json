@@ -18,7 +18,7 @@
                 "source": {
                     "url": "https://github.com/dom-arch/php-dom.git",
                     "type": "git",
-                    "reference": "dev-master"
+                    "reference": "master"
                 }
             }
         }
