@@ -18,25 +18,14 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 
 ## <a name="installation">Installation :</a>
 
-* Put all files, directly on your document root
 * Enable the Apache Rewrite module
-* Add a host, to your hosts file, for each context :
-  * `domain.tld`
-  * `app.domain.tld`
-  * `service.domain.tld`
-* Create a database for each context :
-  * `domain-tld-website`
-  * `domain-tld-app`
-  * `domain-tld-service`
-* Go to the `sql` directory, contained in each context directory, and execute each table script, in the related database
-* In a shell, make these commands, in each context directory :
-  * `composer install`
-  * `php cli/setup.php`
-* Go to http://domain.tld
+* Copy the [document-root-files](./document-root-files) contents, directly on your document root
+* Rename the `domain.tld`, if needed
+* Create or clone a context into the `entrypoints` directory, chosse the subdomain name as dirname
 
-(No virtualhosts needed, the generic .htaccess detects the host and redirects the requests to the directory with the same name)
+No virtualhosts needed, the generic .htaccess files detects the host and redirects the requests to the directory with the same name
 
-(The previous names are, by example, for a fast first shot, you can change them, rename the directories and update the related config.json files, as you want)
+The previous names are, by example, for a fast first shot, you can change them, rename the directories and update the related config.json files, as you want
 
 ## <a name="license">License :</a>
 This project is MIT licensed.
