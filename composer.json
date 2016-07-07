@@ -2,7 +2,6 @@
     "name": "dom-arch/dom-arch",
     "license": "MIT",
     "description": "A PHP core framework, based on the DOM and services oriented",
-    "minimum-stability" : "dev",
     "authors": [
         {
             "name": "Lcfvs",
