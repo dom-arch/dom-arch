@@ -1,0 +1,27 @@
+{
+    "name": "lcfvs/dom-arch",
+    "license": "MIT",
+    "description": "A PHP core framework, based on the DOM and services oriented",
+    "authors": [
+        {
+            "name": "Lcfvs",
+            "email": "michael.rouges@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dom-arch/php-dom"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.1",
+        "dom-arch/php-dom": "dev-master"
+    },
+    "autoload": {
+        "files": ["lib/dump.php"],
+        "psr-4": {
+            "DOMArch\\": "lib"
+        }
+    }
+}
