@@ -12,7 +12,7 @@ A PHP core framework, based on the DOM and services oriented
 ## <a name="installation">Installation :</a>
 
 * Enable the Apache Rewrite module
-* Put copy the generic [.htaccess](./.htaccess) file, directly on your document root. It detects the host and redirects the requests to the directory with the same name (no virtualhosts needed)
+* Copy the generic [.htaccess](./.htaccess) file, directly on your document root. It detects the host and redirects the requests to the directory with the same name (no virtualhosts needed)
 
 ## <a name="the-contexts">The contexts :</a>
 
