@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/dom-arch/php-dom"
+            "url": "https://github.com/dom-arch/php-dom.git"
         }
     ],
     "require": {
