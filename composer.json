@@ -11,16 +11,8 @@
     ],
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "dom-arch/php-dom",
-                "version": "0.9.1",
-                "source": {
-                    "url": "https://github.com/dom-arch/php-dom.git",
-                    "type": "git",
-                    "reference": "dev-master"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/dom-arch/php-dom.git"
         }
     ],
     "require": {
