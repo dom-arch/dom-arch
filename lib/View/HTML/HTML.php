@@ -75,13 +75,23 @@ abstract class HTML
                     $id,
                     $is_translated
                 ) use ($element) {
+                    $parent = $element->parentNode;
+                    $document = $parent->ownerDocument;
+                    $text_node = $document->createTextNode($translation);
+
                     if (!$is_translated) {
-                        $parent = $element->parentNode;
                         $parent->classList->add('untranslated');
                         $parent->dataset->translationId = $id;
                     }
 
-                    $element->nodeValue = $translation;
+                    if ($parent->nodeName === 'title') {
+                        $element->nodeValue = $translation;
+
+                        return;
+                    }
+
+                    $parent->insert($text_node, $element);
+                    //$element->remove();
                 };
 
                 break;
