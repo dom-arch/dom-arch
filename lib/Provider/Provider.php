@@ -5,15 +5,6 @@ use DOMArch\Request\Outcoming;
 
 abstract class Provider
 {
-    const
-        HEADER_QUERY_LIMIT = 'X-Query-Limit',
-        HEADER_QUERY_OFFSET = 'X-Query-Offset',
-        HEADER_QUERY_ORDER = 'X-Query-Order';
-
-    const
-        ORDER_ASC = 'ASC',
-        ORDER_DESC = 'DESC';
-
     protected $_request;
     protected $_module;
     protected $_moduleId;
@@ -79,7 +70,7 @@ abstract class Provider
         return $this->_classId;
     }
 
-    public function addConstraint(string $name, string $value)
+    public function addConstraint(string $name, $value)
     {
         $this->getRequest()
             ->getUrl()
@@ -172,22 +163,49 @@ abstract class Provider
 
     public function limit(int $limit)
     {
-        return $this->addHeader(self::HEADER_QUERY_LIMIT, $limit);
+        return $this->addConstraint('$limit', $limit);
     }
 
     public function offset(int $offset)
     {
-        return $this->addHeader(self::HEADER_QUERY_OFFSET, $offset);
+        return $this->addConstraint('$offset', $offset);
     }
 
     public function asc(string $field)
     {
-        return $this->addHeader(self::HEADER_QUERY_ORDER, $field . '=' . self::ORDER_ASC);
+        return $this->addConstraint('$asc', $field);
     }
 
     public function desc(string $field)
     {
-        return $this->addHeader(self::HEADER_QUERY_ORDER, $field . '=' . self::ORDER_DESC);
+        return $this->addConstraint('$desc', $field);
+    }
+
+    public function gt(string $field, $value)
+    {
+        return $this->addConstraint('$gt', [$field, $value]);
+    }
+
+    public function gte(string $field, $value)
+    {
+        return $this->addConstraint('$gte', [$field, $value]);
+    }
+
+    public function lt(string $field, $value)
+    {
+        return $this->addConstraint('$lt', [$field, $value]);
+    }
+
+    public function lte(string $field, $value)
+    {
+        return $this->addConstraint('$lte', [$field, $value]);
+    }
+
+    public function between(string $field, $min, $max)
+    {
+        return $this
+            ->gte($field, $min)
+            ->lte($field, $max);
     }
 
     protected function _build()
