@@ -24,6 +24,8 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 * Rename the `domain.tld` directory, if needed
 * Create or clone a context into the `entrypoints` directory, choose the subdomain name as directory name
 
+![Your document root contents](./doc/www.png)
+
 No virtualhosts needed, the generic .htaccess files detects the host and redirects the requests to the directory with the same name
 
 The previous names are, by example, for a fast first shot, you can change them, rename the directories and update the related config.json files, as you want
