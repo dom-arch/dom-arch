@@ -96,7 +96,9 @@ abstract class HTML
                     $locale = $element->getAttribute('hreflang') ?: $locale;
                 }
 
-                if (in_array($name, ['action', 'href', 'src'])) {
+                $is_route = in_array($name, ['action', 'href', 'src']);
+
+                if ($is_route) {
                     return $this->translateUrl($translatable, $locale);
                 }
 
@@ -106,10 +108,15 @@ abstract class HTML
                     $translation,
                     $id,
                     $is_translated
-                ) use ($element, $name) {
+                ) use ($element, $name, $is_route) {
                     if (!$is_translated) {
                         $element->classList->add('untranslated');
-                        $element->dataset->translationId = $id;
+
+                        if ($is_route) {
+                            $element->dataset->routeId = $id;
+                        } else {
+                            $element->dataset->translationId = $id;
+                        }
                     }
 
                     $element->setAttribute($name, $translation);
@@ -189,7 +196,7 @@ abstract class HTML
         ) use ($element, $name) {
             if (!$is_translated) {
                 $element->classList->add('untranslated');
-                $element->dataset->translationId = $id;
+                $element->dataset->routeId = $id;
             }
 
             $element->setAttribute($name, $translation);
