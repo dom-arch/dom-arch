@@ -6,7 +6,7 @@ A PHP core framework, based on the DOM and services oriented
 
 ## <a name="summary">Summary</a>
 * [The contexts](#the-contexts)
-* [Installation](#installation)
+* [Requirements](#requirements)
 * [License](#license)
 
 ## <a name="the-contexts">The contexts :</a>
@@ -16,12 +16,13 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 * [app](https://github.com/dom-arch/app) : used for members (identified)
 * [service](https://github.com/dom-arch/service) : used to provide the data to the requiring other contexts
 
-## <a name="installation">Installation :</a>
+## <a name="requirements">Requirements :</a>
 
+* Ensure you have a PHP 7, as minimum
 * Enable the Apache Rewrite module
 * Copy the [document-root-files](./document-root-files) contents, directly on your document root
 * Rename the `domain.tld` directory, if needed
-* Create or clone a context into the `entrypoints` directory, chosse the subdomain name as directory name
+* Create or clone a context into the `entrypoints` directory, choose the subdomain name as directory name
 
 No virtualhosts needed, the generic .htaccess files detects the host and redirects the requests to the directory with the same name
 
