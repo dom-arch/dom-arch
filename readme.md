@@ -30,9 +30,9 @@ Actually, additionally to this core, DOMArch has 3 contexts :
 
 No virtualhosts needed, the generic .htaccess files detects the host and redirects the requests to the directory with the same name
 
-The previous names are, by example, for a fast first shot, you can change them, rename the directories and update the related config.json files, as you want
+The previous names are, for example, for a fast first shot, you can change them, rename the directories and update the related config.json files, as you want
 
 ## <a name="license">License :</a>
-This project is MIT licensed.
+[This project is MIT licensed](https://github.com/dom-arch/dom-arch/blob/master/LICENSE)
 
 Copyright © 2015 - 2016 Lcf.vs
