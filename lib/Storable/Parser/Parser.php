@@ -7,7 +7,7 @@ Released under the MIT license
 https://github.com/Lcfvs/DOMArch
 */
 namespace DOMArch\Storable;
-// todo
+// todo remove?
 final class Parser
 {
     private static $_stores = [];

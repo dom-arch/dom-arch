@@ -23,7 +23,11 @@ abstract class Assembly
             ->toArray();
 
         foreach ($descendants as $descendant) {
-            $descendant->translate();
+            $parent = $descendant->parentNode;
+
+            if ($parent && $parent->nodeName !== 'textarea') {
+                $descendant->translate();
+            }
         }
     }
 
