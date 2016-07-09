@@ -14,7 +14,7 @@ A PHP core framework, based on the DOM and services oriented
 Actually, additionally to this core, DOMArch has 3 contexts :
 * [website](https://github.com/dom-arch/website) : used for visitors (unidentified)
 * [app](https://github.com/dom-arch/app) : used for members (identified)
-* [service](https://github.com/dom-arch/service) : used to provide the data to the requiring other contexts
+* [service](https://github.com/dom-arch/service) : used to provide the data to the requiring other contexts (private API)
 
 ## <a name="requirements">Requirements :</a>
 
