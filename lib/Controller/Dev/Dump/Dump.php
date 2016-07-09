@@ -15,11 +15,14 @@ class Dump extends \DOMArch\Controller\Dev
         $traces = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 
         foreach ($traces as $trace) {
-            if ($trace['class'] !== null) {
+            $class = $trace['class'] ?? null;
+            $function = $trace['function'] ?? null;
+
+            if ($class) {
                 continue;
             }
 
-            if ($trace['function'] === 'dump') {
+            if ($function === 'dump') {
                 break;
             }
         }

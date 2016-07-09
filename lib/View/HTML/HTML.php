@@ -215,7 +215,7 @@ abstract class HTML
         return $element;
     }
 
-    public function __toString()
+    public function stringify()
     {
         if ($this->getTranslator()) {
             $this->getTranslator()->fetch();
@@ -225,12 +225,12 @@ abstract class HTML
             $this->getUrlTranslator()->fetch();
         }
 
-        return parent::__toString();
+        return (string) $this;
     }
 
     public function print()
     {
-        $html = (string) $this;
+        $html = $this->stringify();
 
         header('Content-Type: text/html;charset=' . $this->_encoding);
         header('Content-Length: ' . strlen($html));
