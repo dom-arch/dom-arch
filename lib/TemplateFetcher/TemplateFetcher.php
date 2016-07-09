@@ -5,8 +5,6 @@ use DOMArch\Assembler;
 
 class TemplateFetcher
 {
-    protected static $_fetchers = [];
-
     private $_assembler;
     private $_extension;
     private $_parent;
@@ -26,8 +24,6 @@ class TemplateFetcher
         $this->_extension = $extension;
         $this->_parent = $parent;
         $this->_path = $path;
-
-        self::$_fetchers[] = $this;
     }
 
     public function fetch(
@@ -38,14 +34,12 @@ class TemplateFetcher
         $path = $this->getFilename();
 
         if ($as_clone && !empty(self::$_fragments[$path])) {
-            return self::$_fragments[$path]
-                ->cloneNode(true);
+            return self::$_fragments[$path]->select('*')->cloneNode(true);
         }
 
         if (empty(self::$_templates[$path])) {
             self::$_templates[$path] = $document->loadFile($path);
         }
-
 
         $fragment = $document->loadFragment(self::$_templates[$path]);
 
@@ -53,7 +47,7 @@ class TemplateFetcher
             self::$_fragments[$path] = $fragment;
         }
 
-        return $fragment->cloneNode(true);
+        return $fragment->select('*')->cloneNode(true);
     }
 
     public function getDocument()
@@ -70,7 +64,6 @@ class TemplateFetcher
     {
         $path = $this->_path . '/' . $name;
 
-        return self::$_fetchers[$path]
-        ?? new static($this->_assembler, $path, $this->_extension, $this);
+        return new static($this->_assembler, $path, $this->_extension, $this);
     }
 }
