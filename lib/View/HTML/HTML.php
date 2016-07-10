@@ -118,15 +118,11 @@ abstract class HTML
                     $translation,
                     $id,
                     $is_translated
-                ) use ($element, $name, $is_route) {
+                ) use ($element, $name) {
                     if (!$is_translated) {
                         $element->classList->add('untranslated');
-
-                        if ($is_route) {
-                            $element->dataset->routeId = $id;
-                        } else {
-                            $element->dataset->translationId = $id;
-                        }
+                        $data_name = 'translation-' . $name . 'Id';
+                        $element->dataset->{$data_name} = $id;
                     }
 
                     $element->setAttribute($name, $translation);
@@ -206,7 +202,8 @@ abstract class HTML
         ) use ($element, $name) {
             if (!$is_translated) {
                 $element->classList->add('untranslated');
-                $element->dataset->routeId = $id;
+                $data_name = 'translation-' . $name . 'Id';
+                $element->dataset->{$data_name} = $id;
             }
 
             $element->setAttribute($name, $translation);
