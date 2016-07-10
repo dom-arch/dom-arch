@@ -8,6 +8,7 @@ https://github.com/Lcfvs/DOMArch
 */
 namespace DOMArch\View;
 
+use DOMArch\Config;
 use DOMArch\Request;
 use Exception;
 
@@ -212,7 +213,7 @@ abstract class HTML
         return $element;
     }
 
-    public function stringify()
+    private function _translate()
     {
         if ($this->getTranslator()) {
             $this->getTranslator()->fetch();
@@ -222,12 +223,22 @@ abstract class HTML
             $this->getUrlTranslator()->fetch();
         }
 
-        return (string) $this;
+        return $this;
     }
 
     public function print()
     {
-        $html = $this->stringify();
+        $document = $this->_translate();
+
+        $nodes = new NodeList($this->xpath->query('//*[not(*)][not(normalize-space())]'));
+
+        foreach ($nodes->toArray() as $node) {
+            if (!in_array($node->nodeName, $this->_unbreakables)) {
+                $node->remove();
+            }
+        }
+
+        $html = (string) $document;
 
         header('Content-Type: text/html;charset=' . $this->_encoding);
         header('Content-Length: ' . strlen($html));
