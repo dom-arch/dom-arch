@@ -208,6 +208,11 @@ abstract class Provider
             ->lte($field, $max);
     }
 
+    public function isNull(string $field)
+    {
+        return $this->addConstraint('$null', $field);
+    }
+
     protected function _build()
     {
         $values = [
