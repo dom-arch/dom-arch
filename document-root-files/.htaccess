@@ -1,6 +1,14 @@
 #Copyright 2015 Lcf.vs
 #Released under the MIT license
 #https://github.com/Lcfvs/DOMArch
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header always append X-Frame-Options SAMEORIGIN
+    Header set X-Content-Type-Options: "nosniff"
+    Header set X-Content-Security-Policy "allow 'self';"
+    Header set X-Permitted-Cross-Domain-Policies "master-only"
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
