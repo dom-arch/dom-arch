@@ -127,6 +127,13 @@ trait Set
         return $fields;
     }
 
+    public function toObject(
+        bool $recursive = false
+    )
+    {
+        return (object) $this->toArray($recursive);
+    }
+
     public function each(
         callable $callback
     )
