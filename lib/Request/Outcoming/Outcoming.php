@@ -55,15 +55,15 @@ abstract class Outcoming extends Request
         curl_setopt($resource, CURLOPT_CUSTOMREQUEST, strtoupper($method));
 
         if (in_array($method, ['patch', 'post', 'put'])) {
-            $body = (string)$this->getBody();
+            $request_body = (string)$this->getBody();
 
             if ($key) {
-                $body_string = Crypto::encrypt($body_string, $key);
+                $request_body = Crypto::encrypt($request_body, $key);
             }
 
-            $headers[] = 'Content-Length: ' . strlen($body);
+            $headers[] = 'Content-Length: ' . strlen($request_body);
 
-            curl_setopt($resource, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($resource, CURLOPT_POSTFIELDS, $request_body);
             curl_setopt($resource, CURLOPT_RETURNTRANSFER, true);
         }
 
@@ -75,13 +75,13 @@ abstract class Outcoming extends Request
         curl_close($resource);
 
         $headers = static::parseHeaderString(substr($result, 0, $header_size));
-        $body_string = substr($result, $header_size);
+        $response_body = substr($result, $header_size);
 
         if ($key) {
-            $body_string = Crypto::decrypt($body_string, $key);
+            $response_body = Crypto::decrypt($response_body, $key);
         }
 
-        $this->_buildResponse($headers, $body_string, $status_code);
+        $this->_buildResponse($headers, $response_body, $status_code);
         
         return $this->_response->getBody();
     }
