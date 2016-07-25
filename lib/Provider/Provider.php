@@ -168,12 +168,12 @@ abstract class Provider
 
     public function limit(int $limit)
     {
-        return $this->addConstraint('$limit[]', $limit);
+        return $this->addConstraint('$limit', $limit);
     }
 
     public function offset(int $offset)
     {
-        return $this->addConstraint('$offset[]', $offset);
+        return $this->addConstraint('$offset', $offset);
     }
 
     public function asc(string $field)
