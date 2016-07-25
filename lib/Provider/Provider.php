@@ -256,7 +256,7 @@ abstract class Provider
 
         foreach ($values as $value) {
             if (is_null($value)) {
-                break;
+                continue;
             }
 
             $path .= '/' . $value;
