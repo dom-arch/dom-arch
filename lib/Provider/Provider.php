@@ -72,10 +72,15 @@ abstract class Provider
 
     public function addConstraint(string $name, $value)
     {
-        $this->getRequest()
+        $params = $this->getRequest()
             ->getUrl()
-                ->getParams()
-                    ->set($name, $value);
+                ->getParams();
+        
+        if (substr($name, -2) === '[]') {
+            $params->add(substr($name, 0, -2), $value);
+        } else {
+            $params->set($name, $value);
+        }
 
         return $this;
     }
@@ -163,42 +168,42 @@ abstract class Provider
 
     public function limit(int $limit)
     {
-        return $this->addConstraint('$limit', $limit);
+        return $this->addConstraint('$limit[]', $limit);
     }
 
     public function offset(int $offset)
     {
-        return $this->addConstraint('$offset', $offset);
+        return $this->addConstraint('$offset[]', $offset);
     }
 
     public function asc(string $field)
     {
-        return $this->addConstraint('$asc', $field);
+        return $this->addConstraint('$asc[]', $field);
     }
 
     public function desc(string $field)
     {
-        return $this->addConstraint('$desc', $field);
+        return $this->addConstraint('$desc[]', $field);
     }
 
     public function gt(string $field, $value)
     {
-        return $this->addConstraint('$gt', [$field, $value]);
+        return $this->addConstraint('$gt[]', [$field, $value]);
     }
 
     public function gte(string $field, $value)
     {
-        return $this->addConstraint('$gte', [$field, $value]);
+        return $this->addConstraint('$gte[]', [$field, $value]);
     }
 
     public function lt(string $field, $value)
     {
-        return $this->addConstraint('$lt', [$field, $value]);
+        return $this->addConstraint('$lt[]', [$field, $value]);
     }
 
     public function lte(string $field, $value)
     {
-        return $this->addConstraint('$lte', [$field, $value]);
+        return $this->addConstraint('$lte[]', [$field, $value]);
     }
 
     public function between(string $field, $min, $max)
@@ -210,7 +215,7 @@ abstract class Provider
 
     public function isNull(string $field)
     {
-        return $this->addConstraint('$null', $field);
+        return $this->addConstraint('$null[]', $field);
     }
 
     protected function _build()
