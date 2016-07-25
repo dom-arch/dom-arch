@@ -178,12 +178,12 @@ abstract class Provider
 
     public function asc(string $field)
     {
-        return $this->addConstraint('$asc[]', $field);
+        return $this->addConstraint('$order[]', [$field, 'ASC']);
     }
 
     public function desc(string $field)
     {
-        return $this->addConstraint('$desc[]', $field);
+        return $this->addConstraint('$order[]', [$field, 'DESC']);
     }
 
     public function gt(string $field, $value)
