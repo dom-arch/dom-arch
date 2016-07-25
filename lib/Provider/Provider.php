@@ -218,6 +218,31 @@ abstract class Provider
         return $this->addConstraint('$null[]', $field);
     }
 
+    public function like(string $field, $value)
+    {
+        return $this->addConstraint('$like[]', [$field, $value]);
+    }
+
+    public function contains(string $field, $value)
+    {
+        return $this->like($field, '%' . $value . '%');
+    }
+
+    public function starts(string $field, $value)
+    {
+        return $this->like($field, $value . '%');
+    }
+
+    public function ends(string $field, $value)
+    {
+        return $this->like($field, '%' . $value);
+    }
+
+    public function in(string $field, array $values)
+    {
+        return $this->addConstraint('$in[]', [$field, $values]);
+    }
+
     protected function _build()
     {
         $values = [
