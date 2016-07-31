@@ -188,7 +188,7 @@ abstract class HTML
         $url = $Url::parse($translatable->nodeValue);
         $name = $translatable->name;
         $element = $translatable->ownerElement;
-        $method = 'get';
+        $method = $url->getMethod() ?? 'get';
 
         if ($name === 'action') {
             $method = $element->getAttribute('method');
