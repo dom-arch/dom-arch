@@ -92,7 +92,7 @@ abstract class HTML
                     }
 
                     $parent->insert($text_node, $element);
-                    //$element->remove();
+                    $element->remove();
                 };
 
                 break;
