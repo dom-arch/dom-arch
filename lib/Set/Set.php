@@ -66,7 +66,7 @@ trait Set
     {
         return property_exists($this->_store, $name);
     }
-    
+
     public function add(
         string $name,
         $value
@@ -74,10 +74,10 @@ trait Set
     {
         $store = $this->_store;
 
-        if (!is_array($store->{$name})) {
+        if (empty($store->{$name})) {
             $store->{$name} = [];
         }
-        
+
         $store->{$name}[] = $value;
 
         return $this;
