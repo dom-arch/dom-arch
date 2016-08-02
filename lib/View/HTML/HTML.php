@@ -103,11 +103,11 @@ abstract class HTML
                 $element = $translatable->ownerElement;
                 $locale = $element->getAttribute('lang') ?: $locale;
 
-                if ($name === 'href') {
+                if ($name === 'href' || $name === 'data-href') {
                     $locale = $element->getAttribute('hreflang') ?: $locale;
                 }
 
-                $is_route = in_array($name, ['action', 'href', 'src']);
+                $is_route = in_array($name, ['action', 'href', 'data-href', 'src']);
 
                 if ($is_route) {
                     return $this->translateUrl($translatable, $locale);
