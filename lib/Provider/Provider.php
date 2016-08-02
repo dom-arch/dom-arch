@@ -74,8 +74,8 @@ abstract class Provider
     {
         $params = $this->getRequest()
             ->getUrl()
-                ->getParams();
-        
+            ->getParams();
+
         if (substr($name, -2) === '[]') {
             $params->add(substr($name, 0, -2), $value);
         } else {
@@ -158,7 +158,7 @@ abstract class Provider
     {
         return $this->_build()
             ->getRequest()
-                ->fetch($this->_key);
+            ->fetch($this->_key);
     }
 
     public function getKey()
@@ -184,6 +184,13 @@ abstract class Provider
     public function desc(string $field)
     {
         return $this->addConstraint('$order[]', [$field, 'DESC']);
+    }
+
+    public function sort(string $field = null, string $order = null)
+    {
+        if ($field && $order) {
+            return $this->{$order}($field);
+        }
     }
 
     public function gt(string $field, $value)
@@ -264,7 +271,7 @@ abstract class Provider
 
         $this->getRequest()
             ->getUrl()
-                ->setPath($path);
+            ->setPath($path);
 
         return $this;
     }
