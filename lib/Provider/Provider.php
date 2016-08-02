@@ -176,6 +176,13 @@ abstract class Provider
         return $this->addConstraint('$offset', $offset);
     }
 
+    public function page(int $number, int $limit)
+    {
+        return $this
+            ->limit($limit)
+            ->offset(($number - 1) * $limit);
+    }
+
     public function asc(string $field)
     {
         return $this->addConstraint('$order[]', [$field, 'ASC']);
