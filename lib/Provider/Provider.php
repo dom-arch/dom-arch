@@ -191,6 +191,8 @@ abstract class Provider
         if ($field && $order) {
             return $this->{$order}($field);
         }
+
+        return $this;
     }
 
     public function gt(string $field, $value)
