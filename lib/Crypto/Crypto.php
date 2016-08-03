@@ -30,14 +30,14 @@ class Crypto
         $key = base64_decode($key);
         $iv = self::getRandomBytes(false);
         $encrypted = openssl_encrypt($data, self::AES_256_CBC, $key, 0, $iv);
-        $encoded = base64_encode($encrypted). ':' . base64_encode($iv);
+        $encoded = base64_encode(base64_encode($encrypted). ':' . base64_encode($iv));
 
         return $encoded;
     }
 
     public static function decrypt($data, $key)
     {
-        $data = explode(':', $data);
+        $data = explode(':', base64_decode($data));
         $key = base64_decode($key);
         $decoded = base64_decode($data[0]);
         $iv = base64_decode($data[1]);
