@@ -190,7 +190,7 @@ abstract class HTML
         $element = $translatable->ownerElement;
         $method = $url->getMethod() ?? 'get';
 
-        if ($name === 'action') {
+        if ($name === 'action' && !$method) {
             $method = $element->getAttribute('method');
         }
 
