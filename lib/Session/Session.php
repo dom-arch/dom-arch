@@ -15,10 +15,7 @@ class Session
             throw new Exception('Session must be shared before started');
         }
 
-        $server_name = $_SERVER['SERVER_NAME'];
-        $domain = substr($server_name, strpos($server_name, '.'));
-
-        ini_set('session.cookie_domain', $domain);
+        ini_set('session.cookie_domain', $_SERVER['SERVER_NAME']);
 
         return static::current();
     }
@@ -140,8 +137,6 @@ class Session
                 $params['secure'], $params['httponly']
             );
         }
-
-        $this->clear();
         
         session_destroy();
     }
