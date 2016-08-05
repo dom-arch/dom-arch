@@ -57,7 +57,7 @@ class Crypto
     public static function decryptUri($data, $key)
     {
         if ($data === '/') {
-            return $data;
+            return false;
         }
 
         $rewritten = implode('', explode('/', $data));
