@@ -56,6 +56,10 @@ class Crypto
 
     public static function decryptUri($data, $key)
     {
+        if ($data === '/') {
+            return $data;
+        }
+
         $rewritten = implode('', explode('/', $data));
         $encoded = (str_pad(strtr($rewritten, '-_', '+/'), strlen($rewritten) % 4, '=', STR_PAD_RIGHT));
 
