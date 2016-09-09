@@ -121,7 +121,9 @@ abstract class Assembly
                 $file_object->type = $type;
                 unlink($file['tmp_name']);
 
-                $values[$name] = $file;
+                $values[$name] = $file_object;
+                
+                continue;
             }
 
             $values[$name] = $body_values[$name] ?? null;
