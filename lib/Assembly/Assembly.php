@@ -1,6 +1,7 @@
 <?php
 namespace DOMArch;
 
+use StdClass;
 use DOMArch\Request\Incoming;
 use DOMNode;
 
@@ -85,11 +86,11 @@ abstract class Assembly
             if ($attrset->type === 'file') {
                 $file = $_FILES[$name] ?? null;
 
-                if (!$file) {
+                if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
                     continue;
                 }
 
-                if ($max_file_size < $values[$name]['size']) {
+                if ($max_file_size < $file['size']) {
                     continue;
                 }
 
@@ -102,7 +103,7 @@ abstract class Assembly
                 }
 
                 $formats = explode('|', $accept);
-                $type = $values[$name]['type'];
+                $type = $file['type'];
 
                 if (!in_array($type, $formats)) {
                     continue;
@@ -113,6 +114,12 @@ abstract class Assembly
                 if (!in_array($type, $formats)) {
                     continue;
                 }
+
+                $file_object = new StdClass();
+                $file_object->filename = $file['name'];
+                $file_object->data = file_get_contents($file['tmp_name']);
+                $file_object->type = $type;
+                unlink($file['tmp_name']);
 
                 $values[$name] = $file;
             }
