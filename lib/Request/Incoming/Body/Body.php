@@ -8,7 +8,11 @@ class Body
 {
     use Set;
 
-    public static function fromRequest(Request\Incoming $request) : self
+    /**
+     * @param Request\Incoming $request
+     * @return $this|null
+     */
+    public static function fromRequest(Request\Incoming $request)
     {
         if (!in_array($request->getMethod(), ['patch', 'post', 'put'])) {
             return null;
