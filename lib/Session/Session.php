@@ -84,12 +84,6 @@ class Session
             return $this;
         }
 
-        if (is_callable($default)) {
-            $_SESSION[$name] = $default();
-
-            return $this;
-        }
-
         $_SESSION[$name] = $default;
 
         return $this;
@@ -106,10 +100,6 @@ class Session
     {
         if (array_key_exists($name, $_SESSION)) {
             return $_SESSION[$name];
-        }
-
-        if (is_callable($default)) {
-            return $default();
         }
 
         return $default;
