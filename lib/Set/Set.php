@@ -49,12 +49,6 @@ trait Set
 
         $store = $this->_store;
 
-        if (is_callable($default)) {
-            $store->{$name} = $default();
-
-            return $this;
-        }
-
         $store->{$name} = $default;
 
         return $this;
@@ -102,10 +96,6 @@ trait Set
     {
         if ($this->has($name)) {
             return $this->_store->{$name};
-        }
-
-        if (is_callable($default)) {
-            return $default();
         }
 
         return $default;
